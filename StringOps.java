@@ -22,6 +22,7 @@ public class StringOps {
     ////// ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
+       
     }
 
     public static String capVowelsLowRest(String string) {
@@ -41,20 +42,20 @@ public class StringOps {
         }
         return res;
     }
-   
-    public static char letterToUpper(char c){
+
+    public static char letterToUpper(char c) {
         return ('a' <= c && c <= 'z') ? (char) (c - 32) : c;
     }
 
-    public static char letterToLower(char c){
+    public static char letterToLower(char c) {
         return ('A' <= c && c <= 'Z') ? (char) (c + 32) : c;
     }
 
-    public static String camelCase (String string){
+    public static String camelCase(String string) {
         String res = "";
         res += (string.charAt(0) != 32) ? string.charAt(0) : "";
         for (int i = 1; i < string.length(); i++) {
-            if(string.charAt(i) != 32) {
+            if (string.charAt(i) != 32) {
                 res += (string.charAt(i - 1) == 32) ? letterToUpper(string.charAt(i)) : letterToLower(string.charAt(i));
             }
         }
@@ -63,20 +64,27 @@ public class StringOps {
     }
 
     public static int[] allIndexOf(String string, char c) {
-        int count = 0; 
-        for(int i = 0; i < string.length(); i++) {
-            if(c == string.charAt(i)){
+        int count = 0;
+        for (int i = 0; i < string.length(); i++) {
+            if (c == string.charAt(i)) {
                 count++;
             }
         }
 
         int[] res = new int[count];
-        res[0] = string.indexOf(c);
-        String str = string.substring(res[0] + 1);
-        for(int i = 1; i < res.length; i++) {
-            res[i] = str.indexOf(c) + res[i - 1] + 1;
-            str = string.substring(res[i] + 1);
+        int index = 0;
+        for(int i = 0; i < string.length(); i++) {
+            if(string.charAt(i) == c) {
+                res[index] = i;
+                index++;
+            }
         }
+        // res[0] = string.indexOf(c);
+        // String str = string.substring(res[0] + 1);
+        // for (int i = 1; i < res.length; i++) {
+        //     res[i] = str.indexOf(c) + res[i - 1] + 1;
+        //     str = string.substring(res[i] + 1);
+        // }
         return res;
     }
 }
